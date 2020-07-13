@@ -1,0 +1,12 @@
+@mixin squareCell {
+  height: $cellHeight;
+  width: $cellWidth;
+  background-color: #eee;
+  box-sizing: border-box;
+  border: 1px solid #000;
+  margin-right: $gapX;
+  margin-bottom: $gapY;
+  text-align: center;
+  line-height: $cellWidth;
+  transition: background-color 0.5s, transform 0.5s;
+}

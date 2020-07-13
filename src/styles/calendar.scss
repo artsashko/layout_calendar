@@ -1,0 +1,41 @@
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  width: $cellWidth * 7 + $gapX * 8;
+  height: $cellHeight * 5 + $gapY * 6;
+}
+
+$daysInMonth: 28, 29, 30, 31;
+
+$daysOfWeek:
+  "mon" 0,
+  "tue" 1,
+  "wed" 2,
+  "thu" 3,
+  "fri" 4,
+  "sat" 5,
+  "sun" 6;
+
+@each $dayName, $day in $daysOfWeek {
+  .calendar-#{$dayName} div:first-child {
+    margin-left: ($cellWidth + $gapX) * $day;
+  }
+}
+
+@each $count in $daysInMonth {
+  @for $i from 1 through $count {
+    .calendar-#{$count} div:nth-child(#{$i}) {
+      @include squareCell;
+    }
+
+    .calendar-#{$count} div:nth-child(#{$i})::after {
+      content: "#{$i}";
+    }
+  }
+}
+
+.calendar div:hover {
+  background-color: #ffc0cb;
+  transform: translate(0, -20px);
+  cursor: pointer;
+}
